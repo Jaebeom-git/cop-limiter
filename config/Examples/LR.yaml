@@ -1,0 +1,54 @@
+# LINEAR: Warm-up + Linear Decay
+scheduler_params:
+  type: LINEAR
+  num_warmup_step_ratio: 5
+
+# COSINE: Warm-up + Cosine Decay
+scheduler_params:
+  type: COSINE
+  num_warmup_step_ratio: 5
+  num_cycles: 0.5
+
+# COSINE_WITH_RESTARTS: Warm-up + Cosine Decay with Hard Restarts
+scheduler_params:
+  type: COSINE_WITH_RESTARTS
+  num_warmup_step_ratio: 5
+  num_cycles: 2
+
+# POLYNOMIAL: Warm-up + Polynomial Decay
+scheduler_params:
+  type: POLYNOMIAL
+  num_warmup_step_ratio: 5
+  lr_end: 1.0e-6
+  power: 2.0
+
+# CONSTANT: Fixed Learning Rate
+scheduler_params:
+  type: CONSTANT
+
+# CONSTANT_WITH_WARMUP: Fixed after Warm-up
+scheduler_params:
+  type: CONSTANT_WITH_WARMUP
+  num_warmup_step_ratio: 5
+
+# INVERSE_SQRT: Warm-up + Inverse Square Root Decay
+scheduler_params:
+  type: INVERSE_SQRT
+  num_warmup_step_ratio: 5
+  timescale: 10000
+
+# COSINE_WITH_MIN_LR: Warm-up + Cosine Decay (MIN_LR can be specified)
+scheduler_params:
+  type: COSINE_WITH_MIN_LR
+  num_warmup_step_ratio: 5
+  num_cycles: 0.5
+  min_lr_rate: 1.0e-5
+
+# WARMUP_STABLE_DECAY: Warm-up + Stable + Cosine Decay
+scheduler_params:
+  type: WARMUP_STABLE_DECAY
+  num_warmup_step_ratio: 5
+  num_stable_step_ratio: 70
+  num_decay_step_ratio: 20
+  num_cycles: 0.5
+  min_lr_ratio: 0.01

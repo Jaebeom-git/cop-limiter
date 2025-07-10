@@ -1,0 +1,7 @@
+**/__pycache__
+wandb/
+Data/**
+!Data/dropped_trials.txt
+Geometry/
+checkpoints/
+src/bak

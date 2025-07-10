@@ -1,0 +1,41 @@
+optimizer_params:
+    optimizer: "Adam"              # Optimizer type to use: "Adam"
+    lr: 1.0e-04                    # Learning rate
+    betas: [0.9, 0.999]            # Beta coefficients
+    weight_decay: 0.01             # Weight decay (L2 penalty)
+    eps: 1.0e-08                   # Epsilon for numerical stability
+
+optimizer_params:
+    optimizer: "AdamW"             # Optimizer type to use: "AdamW"
+    lr: 1.0e-04                    # Learning rate
+    betas: [0.9, 0.999]            # Beta coefficients
+    weight_decay: 0.01             # Weight decay (L2 penalty)
+    eps: 1.0e-08                   # Epsilon for numerical stability
+
+optimizer_params:
+    optimizer: "ScheduleFreeAdamW" # Optimizer type to use: "ScheduleFreeAdamW"
+    lr: 1.0e-04                    # Learning rate
+    betas: [0.9, 0.999]            # Beta coefficients
+    weight_decay: 0.01             # Weight decay (L2 penalty)
+    eps: 1.0e-08                   # Epsilon for numerical stability
+    warmup_step_ratio: 5           # Linear warm-up step ratio (%)
+    r: 0.0                         # Square of the polynomial weight for averaging
+    weight_lr_power: 2.0           # Power of the weight learning rate during warm-up
+
+optimizer_params:
+    optimizer: "ScheduleFreeRAdam" # Optimizer type to use: "ScheduleFreeRAdam"
+    lr: 1.0e-04                    # Learning rate
+    betas: [0.9, 0.999]            # Beta coefficients
+    weight_decay: 0.01             # Weight decay (L2 penalty)
+    eps: 1.0e-08                   # Epsilon for numerical stability
+    r: 0.0                         # Square of the polynomial weight for averaging
+    weight_lr_power: 2.0           # Power of the weight learning rate during warm-up
+
+optimizer_params:
+    optimizer: "ScheduleFreeSGD"   # Optimizer type to use: "ScheduleFreeSGD"
+    lr: 1.0e-04                    # Learning rate
+    momentum: 0.9                  # Momentum coefficient (used instead of betas[0])
+    weight_decay: 0.0              # Weight decay (L2 penalty)
+    warmup_step_ratio: 5           # Linear warm-up step ratio (%)
+    r: 0.0                         # Square of the polynomial weight for averaging
+    weight_lr_power: 2.0           # Power of the weight learning rate during warm-up

@@ -1,0 +1,64 @@
+model_name: Mamba_CL_FT
+checkpoint_dir: "./checkpoints"
+device: cuda
+amp: true
+epochs: 100
+seed: 42
+finetune_params:
+    pretrained_model_name: Mamba_CL
+    trainable_layers:
+        - all
+        # - "*head*"
+        # - "*mlp*"
+        # - "*mamba.in_proj*"
+        # - "*mamba.out_proj.*"
+optimizer_params:
+    optimizer: "ScheduleFreeAdamW"
+    lr: 1.0e-04
+    betas: [0.95, 0.999]
+    weight_decay: 0.05
+    eps: 1.0e-08
+    warmup_step_ratio: 5
+    r: 0.0
+    weight_lr_power: 2.0
+data_params:
+    batch_size: 32
+    history_len: 100
+    stride: 1
+    window_stride: 10
+    unbalanced_stride: true
+loss_params:
+    force_mask_threshold: 1.0
+    scale_params:
+        force: 0.1
+        moment: 0.1
+        cop: 1
+        TCLoss: 1.0e-2
+        MPJVE: 1.0e-2
+    force_weight_params:
+        scale_param: [0.5, 1.0, 0.5]
+        max_param:
+            max_force_ratio: 0.5
+            fixed_weight_max: 10.0
+        contact_param:
+            no_contact_force_threshold: 1.0
+            fixed_weight_no_contact: 10.0
+    cop_weight_params:
+        scale_param: [1.0, 0.1, 0.01]
+        dist_param:
+            threshold_min: 0.01
+            threshold_max: 0.02
+            fixed_weight_below_threshold: 0.1
+            distance_max_weight: 10.0
+model_params:
+    use_cop_limiter: true
+    model: GroundMamba
+    mamba_ver: Mamba2
+    num_temporal_blocks: 6
+    temporal_embed_dim: 1024
+    temporal_d_state: 256
+    temporal_d_conv: 2
+    temporal_expand: 2
+    drop_rate: 0.1
+    drop_path_rate: 0.1
+    mlp_ratio: 4.0
