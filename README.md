@@ -26,22 +26,22 @@ This study introduces the **CoP Limiter** (CL), a novel layer designed to guaran
 
 ## 🔍 Results
 
-### Quantitative
+### Quantitative: Baseline (BL) vs CoP-Limiter (CL)
 
-| Cohort         | Encoder     | CoP (m)<br>Baseline | <br>CoP-Limiter | GRF (N/kg)<br>Baseline | <br>CoP-Limiter |
-| -------------- | ----------- | ------------------- | --------------- | ---------------------- | --------------- |
-| **Validation** | FFN         | 0.056               | **0.022**       | 0.611                  | **0.615**       |
-|                | Mamba       | 0.034               | **0.019**       | 0.345                  | **0.345**       |
-|                | Transformer | 0.034               | **0.020**       | 0.328                  | **0.326**       |
-| **Zero-shot**  | FFN         | 0.075               | **0.038**       | 1.119                  | **1.121**       |
-|                | Mamba       | 0.057               | **0.033**       | 0.844                  | **0.806**       |
-|                | Transformer | 0.057               | **0.034**       | 0.804                  | **0.752**       |
+| Cohort         | Encoder     | CoP (m)<br>BL | CoP (m)<br>CL | GRF (N/kg)<br>BL | GRF (N/kg)<br>CL |
+| -------------- | ----------- | ------------- | ------------- | ---------------- | ---------------- |
+| **Validation** | FFN         | 0.056         | **0.022**     | 0.611            | **0.615**        |
+|                | Mamba       | 0.034         | **0.019**     | 0.345            | **0.345**        |
+|                | Transformer | 0.034         | **0.020**     | 0.328            | **0.326**        |
+| **Zero-shot**  | FFN         | 0.075         | **0.038**     | 1.119            | **1.121**        |
+|                | Mamba       | 0.057         | **0.033**     | 0.844            | **0.806**        |
+|                | Transformer | 0.057         | **0.034**     | 0.804            | **0.752**        |
 
-### Qualitative (Baseline vs CoP-Limiter)
+### Qualitative: Baseline (BL) vs CoP-Limiter (CL)
 
 <img src="docs/estimation_result.gif" width="100%">
 
-> Red = force-plate GRF, Blue = estimate, Green box = VFB. BL = baseline, CL = with CoP-Limiter.
+> Red = force-plate GRF, Blue = estimate, Green box = VFB.
 
 ---
 
