@@ -1,0 +1,43 @@
+model_name: GroundLink_CL
+checkpoint_dir: "./checkpoints"
+device: cuda
+amp: true
+epochs: 100
+seed: 42
+optimizer_params:
+    optimizer: "ScheduleFreeAdamW"
+    lr: 1.0e-04
+    betas: [0.95, 0.999]
+    weight_decay: 0.05
+    eps: 1.0e-08
+    warmup_step_ratio: 5
+    r: 0.0
+    weight_lr_power: 2.0
+data_params:
+    batch_size: 32
+    history_len: 100
+    stride: 1
+    window_stride: 10
+    unbalanced_stride: true
+loss_params:
+    force_mask_threshold: 1.0
+    scale_params:
+        force: 1
+        moment: 0.1
+        cop: 1
+        TCLoss: 1.0e-3
+        MPJVE: 1.0e-2
+    force_weight_params:
+        scale_param: [0.5, 1.0, 0.5]
+    cop_weight_params:
+        scale_param: [1.0, 0.1, 0.01]
+model_params:
+    model: GroundLink
+    use_cop_limiter: true
+    cnn_kernel: 7
+    cnn_dropout: 0.0
+    fc_depth: 3
+    fc_dropout: 0.2
+    groundlink_init: true
+    cnn_channels: [128, 128, 256, 256]
+

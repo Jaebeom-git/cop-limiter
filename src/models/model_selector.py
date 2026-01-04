@@ -1,10 +1,12 @@
 import torch
 from models.GroundFFN import GroundFFN
+from models.GroundLink import GroundLink
 from models.GroundMamba import GroundMamba, GroundSTMamba
 from models.GroundTransformer import GroundTransformer
 
 MODELS = {
     'GroundFFN': GroundFFN,
+    'GroundLink': GroundLink,
     'GroundMamba': GroundMamba,
     'GroundSTMamba': GroundSTMamba,
     'GroundTransformer': GroundTransformer,
