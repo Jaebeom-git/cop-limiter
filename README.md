@@ -1,6 +1,17 @@
 # Center-of-Pressure-Constrained GRF Estimation
 
-> **Note:** Manuscript in Preparation.
+> **Related publication**
+>
+> Jo, J., Kim, K., Kang, M. et al.
+> **Joint torque estimation from daily living motion for passive sarcopenia monitoring in older adults**.
+> *Journal of NeuroEngineering and Rehabilitation* (2026).
+> Published online: 2026-04-05.
+> https://doi.org/10.1186/s12984-026-01962-3
+>
+> This repository contains the **CoP-constrained GRF estimation component**
+> used in the published study. It focuses on the GRF/CoP estimation module and
+> does **not necessarily include the full MAISE clinical analysis pipeline**
+> reported in the paper.
 
 ---
 
@@ -19,7 +30,7 @@ This study introduces the **CoP Limiter** (CL), a novel layer designed to guaran
 
 -   **Training dataset** [AddBiomechanics Core](https://addbiomechanics.org/download_data.html) — 24 M frames, 273 subjects, 70 h motion-capture + kinetics (accessed **2024-09-01**).
 -   **Validation set** Hold-out split from the AddBiomechanics Core Dataset.
--   **Zero-shot test** 29 older adults performing four ADLs (5-Times Chair Stand, Chair Stand, Pick-Up, Step-Up) — _no fine-tuning_.
+-   **Zero-shot test** 28 older adults performing four ADLs (5-Times Chair Stand, Chair Stand, Pick-Up, Step-Up) — _no fine-tuning_.
 -   **Encoders** Feed-Forward (FFN), Mamba (SSM), Transformer (Attention) — 117 M parameters each, window = 100 frames.
 
 ---
@@ -102,8 +113,14 @@ python src/main.py evaluate \
 
 > **Built on** : This repository is a derivative work of [keenon/InferBiomechanics](https://github.com/keenon/InferBiomechanics)
 
-_A formal citation will be available soon — Manuscript in Preparation._
+If you use this repository, please cite the associated paper:
 
----
-
-_Last updated : 2025-07-10_
+```bibtex
+@article{jo2026joint,
+  title   = {Joint torque estimation from daily living motion for passive sarcopenia monitoring in older adults},
+  author  = {Jo, Jaebeom and Kim, Kihyun and Kang, Min-gu and others},
+  journal = {Journal of NeuroEngineering and Rehabilitation},
+  year    = {2026},
+  doi     = {10.1186/s12984-026-01962-3}
+}
+```
