@@ -1,24 +1,42 @@
 # Center-of-Pressure-Constrained GRF Estimation
 
-> **Related publication**
->
-> Jo, J., Kim, K., Kang, M. et al.
-> **Joint torque estimation from daily living motion for passive sarcopenia monitoring in older adults**.
-> *Journal of NeuroEngineering and Rehabilitation* (2026).
-> Published online: 2026-04-05.
-> https://doi.org/10.1186/s12984-026-01962-3
->
-> This repository contains the **CoP-constrained GRF estimation component**
-> used in the published study. It focuses on the GRF/CoP estimation module and
-> does **not necessarily include the full MAISE clinical analysis pipeline**
-> reported in the paper.
+<p align="center">
+  CoP-constrained GRF estimation component used in the published study<br>
+  <i>Joint torque estimation from daily living motion for passive sarcopenia monitoring in older adults</i>
+</p>
+
+<p align="center">
+  <a href="https://doi.org/10.1186/s12984-026-01962-3">
+    <img src="https://img.shields.io/badge/Paper-DOI-1d4ed8?style=flat-square">
+  </a>
+  <a href="https://jaebeom-git.github.io/Portfolio/projects/cop-limiter/">
+    <img src="https://img.shields.io/badge/Project-Page-0f766e?style=flat-square">
+  </a>
+  <a href="https://github.com/Jaebeom-git/cop-limiter">
+    <img src="https://img.shields.io/badge/Code-GitHub-1f2937?style=flat-square">
+  </a>
+</p>
+
+---
+
+## 🔗 Related publication
+
+**Jo, J., Kim, K., Kang, M. et al.**  
+**Joint torque estimation from daily living motion for passive sarcopenia monitoring in older adults**  
+*Journal of NeuroEngineering and Rehabilitation (2026)*  
+Published online: 2026-04-05  
+https://doi.org/10.1186/s12984-026-01962-3
 
 ---
 
 ## 🌟 Highlights
 
--   **CoP-Constrained Learning** We introduce a **CoP Limiter**, a simple layer that guarantees physically valid predictions. It constrains the predicted Center of Pressure (CoP) to remain within a **Virtual Foot Boundary (VFB)** defined by anatomical landmarks.
--   **Improved Accuracy & Generalization**: Reduces CoP prediction error by **up to 60.7%** on validation data and demonstrates robust cross-domain generalization in zero-shot tests, improving GRF error by **up to 6.5%** without any fine-tuning.
+- **CoP-Constrained Learning**  
+  We introduce a **CoP Limiter**, a simple layer that guarantees physically valid predictions.  
+  It constrains the predicted Center of Pressure (CoP) to remain within a **Virtual Foot Boundary (VFB)** defined by anatomical landmarks.
+
+- **Improved Accuracy & Generalization**  
+  Reduces CoP prediction error by **up to 60.7%** on validation data and demonstrates robust cross-domain generalization in zero-shot tests, improving GRF error by **up to 6.5%** without any fine-tuning.
 
 ---
 
@@ -28,10 +46,17 @@ Ground Reaction Force (GRF) is an essential element for dynamics simulation in h
 
 This study introduces the **CoP Limiter** (CL), a novel layer designed to guarantee physical plausibility. The layer constrains the predicted CoP to lie **within a subject-specific Virtual Foot Boundary (VFB)** defined from anatomical landmarks without changing the base model architecture.
 
--   **Training dataset** [AddBiomechanics Core](https://addbiomechanics.org/download_data.html) — 24 M frames, 273 subjects, 70 h motion-capture + kinetics (accessed **2024-09-01**).
--   **Validation set** Hold-out split from the AddBiomechanics Core Dataset.
--   **Zero-shot test** 28 older adults performing four ADLs (5-Times Chair Stand, Chair Stand, Pick-Up, Step-Up) — _no fine-tuning_.
--   **Encoders** Feed-Forward (FFN), Mamba (SSM), Transformer (Attention) — 117 M parameters each, window = 100 frames.
+- **Training dataset**  
+  [AddBiomechanics Core](https://addbiomechanics.org/download_data.html) — 24 M frames, 273 subjects, 70 h motion-capture + kinetics (accessed **2024-09-01**).
+
+- **Validation set**  
+  Hold-out split from the AddBiomechanics Core Dataset.
+
+- **Zero-shot test**  
+  28 older adults performing four ADLs (5-Times Chair Stand, Chair Stand, Pick-Up, Step-Up) — _no fine-tuning_.
+
+- **Encoders**  
+  Feed-Forward (FFN), Mamba (SSM), Transformer (Attention) — 117 M parameters each, window = 100 frames.
 
 ---
 
@@ -50,15 +75,13 @@ This study introduces the **CoP Limiter** (CL), a novel layer designed to guaran
 
 ### Qualitative: Baseline (BL) vs CoP-Limiter (CL)
 
-<img src="docs/estimation_result.gif" width="100%">
+<img src="docs/assets/figure-11-qualitative-results.gif" width="100%">
 
-> Red = force-plate GRF, Blue = estimate, Green box = VFB.
+> Fig. 11 from the paper. Red = ground truth, Blue = estimate, Green = VFB.
 
 ---
 
 ## 🚀 Quick Start
-
----
 
 ### Train
 
@@ -109,9 +132,9 @@ python src/main.py evaluate \
     --data-loading-workers 4
 ```
 
-## 📄 Citation
+---
 
-> **Built on** : This repository is a derivative work of [keenon/InferBiomechanics](https://github.com/keenon/InferBiomechanics)
+## 📄 Citation
 
 If you use this repository, please cite the associated paper:
 
@@ -124,3 +147,9 @@ If you use this repository, please cite the associated paper:
   doi     = {10.1186/s12984-026-01962-3}
 }
 ```
+
+---
+
+## 🔧 Acknowledgment
+
+> **Built on** : This repository is a derivative work of [keenon/InferBiomechanics](https://github.com/keenon/InferBiomechanics)
